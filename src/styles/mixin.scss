@@ -1,0 +1,36 @@
+//
+@mixin round ($px) {
+width: $px;
+height: $px;
+border-radius: $px;
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin text-clamp {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@mixin line-clamp($line: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+@mixin row($gap: 0) {
+  margin-left: #{-$gap / 2};
+  margin-right: #{-$gap / 2};
+  display: flex;
+  flex-wrap: wrap;
+}
+@mixin col($item: 2, $gap: 0) {
+  box-sizing: border-box;
+  width: #{100 / $item + '%'};
+  padding-left: #{$gap / 2};
+  padding-right: #{$gap / 2};
+}
