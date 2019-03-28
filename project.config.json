@@ -1,13 +1,42 @@
 {
-  "miniprogramRoot": "./dist",
-  "compileType": "miniprogram",
-  "setting": {
-    "es6": false,
-    "postcss": false,
-    "minified": false,
-    "uglifyFileName": false,
-    "newFeature": true
-  },
-  "appid": "",
-  "projectname": "newapp"
+	"miniprogramRoot": "dist/",
+	"compileType": "miniprogram",
+	"setting": {
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"uglifyFileName": false,
+		"newFeature": true
+	},
+	"appid": "wxfb5c1ac84ed5d5c4",
+	"projectname": "LMP",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "0.0",
+					"pathName": "pages/lead-form",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
 }

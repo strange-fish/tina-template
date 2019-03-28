@@ -5,34 +5,18 @@ import apis from './utils/wxApi'
 import http from './utils/http'
 import globalVariable from './utils/globalVariable'
 
-function injectDep (deps) {
-  [Page, Component].forEach((item) => {
-    Object.defineProperties(item.prototype, deps)
+function injectDep(deps) {
+  ;[Page, Component].forEach(item => {
+    Object.assign(item.prototype, deps)
   })
 }
 
 const eventBus = new Bus()
 
 injectDep({
-  $bus: {
-    get () {
-      return eventBus
-    }
-  },
-  $day: {
-    get () {
-      return dayjs
-    }
-  },
-  $global: {
-    get () {
-      return globalVariable
-    }
-  },
-  $http: {
-    get () {
-      return http
-    }
-  },
-  ...apis
+  $bus: eventBus,
+  $day: dayjs,
+  $global: globalVariable,
+  $http: http,
+  ...apis,
 })

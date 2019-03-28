@@ -37,6 +37,14 @@ module.exports = {
     publicPath: '/',
     globalObject: 'wx',
   },
+  stats: {
+    assets: false,
+    chunks: false,
+    chunkModules: false,
+    chunkOrigins: false,
+    modules: false,
+    colors: true
+  },
   module: {
     rules: [
       {
