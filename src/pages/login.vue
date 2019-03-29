@@ -23,11 +23,7 @@
         {{ counting }}s
       </view>
     </view>
-    <button
-      class="login__btn {{canLogin ? '' : 'is-disabled'}}"
-      bindtap="login"
-      disabled="{{!canLogin}}"
-    >
+    <button class="login__btn" bindtap="login" disabled="{{!canLogin}}">
       登录
     </button>
   </view>
@@ -144,7 +140,7 @@ Page.define({
     font-size: 18px;
 
     background: linear-gradient(to bottom, #06b4ea, #009ee8);
-    &.is-disabled {
+    &[disabled] {
       filter: grayscale(100%);
     }
   }

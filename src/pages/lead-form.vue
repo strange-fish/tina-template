@@ -247,7 +247,7 @@ $item-height: 40px;
     display: block;
     width: 100%;
     height: 100%;
-    color: $light-blue;
+    color: $blue;
   }
   &__text {
     display: flex;
@@ -276,7 +276,7 @@ $item-height: 40px;
 }
 .lead-picker {
   width: 100%;
-  color: $light-blue;
+  color: $blue;
   &__inner {
     display: flex;
     align-items: center;

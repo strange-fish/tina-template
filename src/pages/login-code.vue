@@ -15,11 +15,7 @@
       class="login__input"
       bindinput="handleInput"
     />
-    <button
-      class="login__btn {{canSendCode ? '' : 'is-disabled'}}"
-      bindtap="sendCode"
-      disabled="{{!canSendCode}}"
-    >
+    <button class="login__btn" bindtap="sendCode" disabled="{{!canSendCode}}">
       下一步
     </button>
   </view>
@@ -91,7 +87,7 @@ Page.define({
     font-size: 18px;
 
     background: linear-gradient(to bottom, #06b4ea, #009ee8);
-    &.is-disabled {
+    &[disabled] {
       filter: grayscale(100%);
     }
   }

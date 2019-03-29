@@ -51,6 +51,13 @@ Component.define({
     value: {
       type: [String, Number],
       value: '-1',
+      // observer(val) {
+      //   const { range } = this.data
+      //   const index = range.findIndex(item => item.value === val)
+      //   this.setData({
+      //     curr
+      //   })
+      // }
     },
     error: {
       type: String,
