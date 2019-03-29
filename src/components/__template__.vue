@@ -6,7 +6,7 @@
 
 <template xlang="wxml" minapp="native">
   <view>
-    <slot></slot>
+    <slot />
   </view>
 </template>
 
@@ -14,15 +14,10 @@
 import { Component } from '@tinajs/tina'
 
 Component.define({
-  data: {
+  data: {},
 
-  },
-  
-  methods: {
-  }
+  methods: {},
 })
 </script>
 
-<style lang="scss">
-</style>
-
+<style lang="scss"></style>

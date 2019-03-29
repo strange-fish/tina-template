@@ -75,7 +75,7 @@ Page.define({
     width: 288px;
     height: 40px;
     margin: 0 auto;
-    padding-left: 8px;
+    padding-left: 18px;
 
     border-radius: 5px;
     background-color: #fff;

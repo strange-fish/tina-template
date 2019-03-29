@@ -119,7 +119,7 @@ Page.define({
     box-sizing: border-box;
     flex: 1;
     height: 40px;
-    padding-left: 8px;
+    padding-left: 18px;
 
     font-size: 14px;
   }
