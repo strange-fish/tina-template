@@ -16,9 +16,13 @@ export function toast(title, config = {}) {
 
 export function modal(title, content, config = {}) {
   return new Promise((resolve, reject) => {
+    const c = (typeof content === 'object'
+      ? JSON.stringify(content)
+      : content
+    ).substring(0, 500)
     wx.showModal({
       title,
-      content,
+      content: c,
       showCancel: false, // 是否显示取消按钮,
       confirmText: '确定', // 确定按钮的文字，默认为取消，最多 4 个字符,
       confirmColor: '#3CC51F', // 确定按钮的文字颜色,

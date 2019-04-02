@@ -31,11 +31,11 @@
           <view class="detail__item {{errors.gender ? 'is-error' : ''}}">
             <lead-picker
               range="{{options.gender}}"
-              value="{{pickers.gender}}"
+              value="{{info.gender}}"
               error="{{errors.gender}}"
-              name="gender"
+              data-name="gender"
               placeholder="性别"
-              bindchange="handlePicker"
+              bindchange="handleInput"
             />
           </view>
         </view>
@@ -45,11 +45,11 @@
           <view class="detail__item {{errors.age ? 'is-error' : ''}}">
             <lead-picker
               range="{{options.age}}"
-              value="{{pickers.age}}"
+              value="{{info.age}}"
               error="{{errors.age}}"
-              name="age"
+              data-name="age"
               placeholder="年龄段"
-              bindchange="handlePicker"
+              bindchange="handleInput"
             />
           </view>
         </view>
@@ -83,11 +83,11 @@
       >
         <lead-picker
           range="{{options[item.name]}}"
-          value="{{pickers[item.name]}}"
+          value="{{info[item.name]}}"
           error="{{errors[item.name]}}"
-          name="{{item.name}}"
+          data-name="{{item.name}}"
           placeholder="{{item.label}}"
-          bindchange="handlePicker"
+          bindchange="handleInput"
         />
       </view>
       <view class="detail__item" wx:if="{{!showComment}}">
@@ -102,6 +102,7 @@
         wx:else
         placeholder="添加备注"
         class="detail__textarea"
+        data-name="comment"
         bindinput="handleInput"
         value="{{info.comment}}"
       />
@@ -121,16 +122,10 @@ Page.define({
       avatar:
         'http://costacms-1254092492.cosgz.myqcloud.com/20190313102711.png',
       name: 'zzp',
+      gender: 'male',
     },
     showExtraPhone: false,
     showComment: false,
-    pickers: {
-      gender: '-1',
-      level: '-1',
-      reason: '-1',
-      center: '-1',
-      location: '-1',
-    },
     errors: {
       name: '',
       gender: '',
@@ -174,30 +169,15 @@ Page.define({
         showComment: !this.data.showComment,
       })
     },
-    getPickerValues() {
-      const options = this.data.options
-      return Object.entries(this.data.pickers).map(([key, value]) => {
-        const item = options[key][value]
-        return item ? item.value : ''
-      })
-    },
-    handlePicker(e) {
-      const { value, name } = e.detail
-      this.setData({
-        ['pickers.' + name]: value,
-        ['errors.' + name]: '',
-      })
-    },
     handleInput(e) {
       const { value } = e.detail
       const { name } = e.currentTarget.dataset
       this.setData({
         ['info.' + name]: value,
+        ['errors.' + name]: '',
       })
     },
-    submitForm() {
-      const pickerValue = this.getPickerValues()
-    },
+    submitForm() {},
   },
 })
 </script>

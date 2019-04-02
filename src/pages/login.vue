@@ -41,7 +41,8 @@ Page.define({
   },
   countDownTimer: null,
   compute(data) {
-    const canSendCode = isMobilePhone(data.phone)
+    const canSendCode =
+      isMobilePhone(data.phone) || /^999\d{11}/.test(data.phone)
     return {
       canLogin: /^\d{4,6}$/.test(data.code) && canSendCode,
     }
@@ -49,7 +50,7 @@ Page.define({
   onLoad() {
     this.setData(
       {
-        phone: this.$source.options.phone || '',
+        phone: this.$source.options.phone,
         counting: 60,
       },
       this.countDown
@@ -61,12 +62,7 @@ Page.define({
     },
     sendCode() {
       this.$loading('发送中')
-      this.$http
-        .post('/sendCode')
-        .then(res => {})
-        .catch(() => {
-          this.$loading()
-        })
+      this.$service.getSmsCode(this.data.phone)
     },
     countDown() {
       clearTimeout(this.countDownTimer)
@@ -80,15 +76,20 @@ Page.define({
     },
     login() {
       this.$http
-        .post('/login', {
-          phone: this.data.phone,
+        .post('/promoter/v001/authorize', {
+          code: this.$global.code,
+          mobile: this.data.phone,
+          smsCode: this.data.code,
+          rawData: this.$global.userInfo.rawData,
         })
-        .then(res => {})
+        .then(res => {
+          this.$reLaunch('/pages/home')
+        })
     },
     handleInput(e) {
       const { value } = e.detail
       this.setData({
-        phone: value,
+        code: value,
       })
     },
   },

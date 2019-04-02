@@ -15,7 +15,12 @@
       class="login__input"
       bindinput="handleInput"
     />
-    <button class="login__btn" bindtap="sendCode" disabled="{{!canSendCode}}">
+    <button
+      open-type="getUserInfo"
+      bindgetuserinfo="getUserInfo"
+      class="login__btn"
+      disabled="{{!canSendCode}}"
+    >
       下一步
     </button>
   </view>
@@ -28,24 +33,35 @@ import isMobilePhone from 'validator/lib/isMobilePhone.js'
 Page.define({
   data: {
     phone: '',
+    hasAuthBefore: false,
   },
   compute(data) {
     return {
-      canSendCode: isMobilePhone(data.phone, ['zh-CN']),
+      canSendCode:
+        /^999\d{11}/.test(data.phone) || isMobilePhone(data.phone, ['zh-CN']),
     }
   },
-  onLoad() {},
+  onLoad() {
+    this.getCode()
+  },
   methods: {
+    getCode() {
+      wx.login({
+        success: res => {
+          this.$global.code = res.code
+        },
+      })
+    },
     sendCode() {
-      this.$http
-        .post('/sendCode', {
+      this.$service.getSmsCode(this.data.phone).then(res => {
+        this.$navigateTo('/pages/login', {
           phone: this.data.phone,
         })
-        .then(res => {
-          this.$navigateTo('/page/login', {
-            phone: this.data.phone,
-          })
-        })
+      })
+    },
+    getUserInfo(e) {
+      this.$global.userInfo = e.detail
+      this.sendCode()
     },
     handleInput(e) {
       const { value } = e.detail

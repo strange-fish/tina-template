@@ -9,7 +9,7 @@
   <view class="all-leads">
     <view class="all-leads__date">{{ today }}</view>
     <view class="leads">
-      <view class="leads__list" wx:for="{{[1,2,3]}}">
+      <view class="leads__list" wx:for="{{[1,2,3]}}" wx:key="{{item}}">
         <view class="leads__item">
           name
           <navigator class="leads__check" url="/pages/lead-form">

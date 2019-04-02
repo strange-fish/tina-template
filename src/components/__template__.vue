@@ -16,7 +16,8 @@ import { Component } from '@tinajs/tina'
 Component.define({
   data: {},
 
-  methods: {},
+  methods: {
+  },
 })
 </script>
 

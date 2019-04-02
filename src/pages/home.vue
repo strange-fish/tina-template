@@ -70,8 +70,25 @@ Page.define({
   data: {
     mark: 80,
     total: 100,
+    hasInit: false,
   },
-  onLoad() {},
+  onLoad() {
+    this.$loading('验证中')
+    this.$service
+      .precheck()
+      .then(res => {
+        this.setData({ hasInit: true })
+        this.initData()
+      })
+      .finally(() => {
+        this.$loading()
+      })
+  },
+  onShow() {
+    if (this.data.hasInit) {
+      this.initData()
+    }
+  },
   compute(data) {
     const [color, text] = this.getColorAndText(data.mark)
     const percent = 1 - data.mark / data.total
@@ -82,19 +99,22 @@ Page.define({
     }
   },
   methods: {
-    setMark(mark, step = 0) {
-      const steps = [0.05, 0.1, 0.2, 0.35, 0.5, 0.6, 0.8, 1]
-
-      if (step < steps.length) {
-        const nextStep = steps[step]
-        this.setData({
-          mark: Math.round(mark * nextStep),
-        })
-        setTimeout(() => {
-          this.setMark(mark, step + 1)
-        }, 150)
-      }
+    initData() {
+      this.$toast('加载中')
     },
+    // setMark(mark, step = 0) {
+    //   const steps = [0.05, 0.1, 0.2, 0.35, 0.5, 0.6, 0.8, 1]
+
+    //   if (step < steps.length) {
+    //     const nextStep = steps[step]
+    //     this.setData({
+    //       mark: Math.round(mark * nextStep),
+    //     })
+    //     setTimeout(() => {
+    //       this.setMark(mark, step + 1)
+    //     }, 150)
+    //   }
+    // },
     getColorAndText(mark = 0) {
       if (mark <= 10) {
         return ['#ff5500', '初出茅庐']

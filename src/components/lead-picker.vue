@@ -9,18 +9,18 @@
     class="lead-picker"
     range="{{range}}"
     range-key="{{rangeKey}}"
-    value="{{value}}"
+    value="{{currentIndex}}"
     bindchange="handlePicker"
     data-name="{{name}}"
   >
     <view class="lead-picker__inner">
-      <block wx:if="{{range[value]}}">
-        {{ range[value][rangeKey] }}
+      <block wx:if="{{range[currentIndex]}}">
+        {{ range[currentIndex][rangeKey] }}
       </block>
       <view wx:else class="lead-picker__label {{error ? 'is-error' : ''}}">
         {{ placeholder }}
       </view>
-
+      <!-- 没办法图片要静态分析 -->
       <image
         wx:if="{{error}}"
         class="lead-picker__arrow"
@@ -51,19 +51,14 @@ Component.define({
     value: {
       type: [String, Number],
       value: '-1',
-      // observer(val) {
-      //   const { range } = this.data
-      //   const index = range.findIndex(item => item.value === val)
-      //   this.setData({
-      //     curr
-      //   })
-      // }
+      observer(val) {
+        const index = this.data.range.findIndex(item => item.value === val)
+        this.setData({
+          currentIndex: String(index),
+        })
+      },
     },
     error: {
-      type: String,
-      value: '',
-    },
-    name: {
       type: String,
       value: '',
     },
@@ -72,13 +67,15 @@ Component.define({
       value: '',
     },
   },
-  data: {},
+  data: {
+    currentIndex: '-1',
+  },
 
   methods: {
     handlePicker(e) {
+      const item = this.data.range[e.detail.value]
       this.triggerEvent('change', {
-        value: e.detail.value,
-        name: this.data.name,
+        value: item.value,
       })
     },
   },
