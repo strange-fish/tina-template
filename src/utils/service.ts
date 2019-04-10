@@ -1,21 +1,21 @@
-import http from './http.js'
+import http from './http'
 
 export default class Service {
-  getSmsCode(mobile) {
+  getSmsCode (mobile: string) {
     return http.post('/sms/v001/promoter/send-verify-code', {
-      mobile,
+      mobile
     })
   }
 
-  precheck(shouldRelaunch = true) {
+  precheck (shouldRelaunch = true) {
     return new Promise((resolve, reject) => {
       wx.login({
         success: res => {
           http
             .post('/promoter/v001/authorization/pre-check', {
-              code: res.code,
+              code: res.code
             })
-            .then(res => {
+            .then((res: any) => {
               if (res.isNeedLogin) {
                 shouldRelaunch && wx.reLaunch({ url: '/pages/login-code' })
                 reject(res)
@@ -25,12 +25,12 @@ export default class Service {
             })
             .catch(reject)
         },
-        fail: reject,
+        fail: reject
       })
     })
   }
 
-  logout() {
+  logout () {
     return http.post('/promoter/v001/authorization/logout')
   }
 }

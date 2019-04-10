@@ -1,16 +1,14 @@
 export default class Bus {
-  constructor() {
-    this._eventMap = {}
-  }
+  _eventMap = {} as Record<string, Function[]>
   /**
    * 绑定事件
    * @param {String} event
    * @param {Function} cb
    */
-  on(event, cb) {
+  on(event: string, cb: Function) {
     if (typeof cb !== 'function') throw new Error('Not a function!')
     const cbList = this._eventMap[event] || []
-    if (!cbList.includes(cb)) {
+    if (cbList.indexOf(cb) === -1) {
       cbList.push(cb)
       this._eventMap[event] = cbList
     }
@@ -20,7 +18,7 @@ export default class Bus {
    * @param {String} event
    * @param {Function} cb
    */
-  off(event, cb) {
+  off(event: string, cb: Function) {
     const cbList = this._eventMap[event] || []
     this._eventMap[event] = cbList.filter(item => item !== cb)
   }
@@ -29,7 +27,7 @@ export default class Bus {
    * @param {String} event
    * @param {Any} args
    */
-  emit(event, args) {
+  emit(event: string, args: any) {
     this._eventMap[event].forEach(cb => cb(args))
   }
 }

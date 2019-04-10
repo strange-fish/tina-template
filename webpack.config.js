@@ -7,14 +7,22 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 const loaders = {
   script: 'babel-loader',
+  ts: {
+    loader: 'ts-loader',
+    options: {
+      context: __dirname,
+      transpileOnly: true,
+      appendTsSuffixTo: [/\.vue$/]
+    }
+  },
   style: {
     loader: 'postcss-loader',
     options: {
       config: {
-        path: resolve('./postcss.config.js'),
-      },
-    },
-  },
+        path: resolve('./postcss.config.js')
+      }
+    }
+  }
 }
 
 const myStyle = [
@@ -23,19 +31,23 @@ const myStyle = [
   {
     loader: 'sass-resources-loader',
     options: {
-      resources: resolve(__dirname, './src/styles/index.scss'),
-    },
-  },
+      resources: resolve(__dirname, './src/styles/index.scss')
+    }
+  }
 ]
 
 module.exports = {
   context: resolve('src'),
   entry: './app.vue',
+  resolve: {
+    extensions: ['.ts', '.js'],
+    symlinks: true
+  },
   output: {
     path: resolve('dist'),
     filename: '[name]',
     publicPath: '/',
-    globalObject: 'wx',
+    globalObject: 'wx'
   },
   stats: {
     assets: false,
@@ -43,7 +55,7 @@ module.exports = {
     chunkModules: false,
     chunkOrigins: false,
     modules: false,
-    colors: true,
+    colors: true
   },
   module: {
     rules: [
@@ -55,45 +67,47 @@ module.exports = {
             loader: '@tinajs/mina-loader',
             options: {
               loaders,
+              // 那是相当坑啊！！！！！
               languages: {
-                scss: myStyle,
-              },
-            },
-          },
-        ],
+                ts: loaders.ts,
+                scss: myStyle
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.mina$/,
         include: /node_modules/,
-        use: '@tinajs/mina-loader',
+        use: '@tinajs/mina-loader'
       },
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        use: loaders.script,
+        use: loaders.ts
       },
       {
         test: /\.(css|wxss)$/,
         exclude: /node_modules/,
-        use: loaders.style,
+        use: loaders.style
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: 'assets/[name].[hash:6].[ext]',
-          },
-        },
+            name: 'assets/[name].[hash:6].[ext]'
+          }
+        }
       },
       {
         test: /\.wxs$/,
         use: {
           loader: '@tinajs/wxs-loader',
           options: {
-            name: 'wxs/[name].[hash:6].[ext]',
-          },
-        },
+            name: 'wxs/[name].[hash:6].[ext]'
+          }
+        }
       },
       {
         test: /\.wxml$/,
@@ -101,42 +115,39 @@ module.exports = {
           {
             loader: 'relative-file-loader',
             options: {
-              name: 'wxml/[name].[hash:6].[ext]',
-            },
+              name: 'wxml/[name].[hash:6].[ext]'
+            }
           },
           {
             loader: '@tinajs/wxml-loader',
             options: {
               raw: true,
               enforceRelativePath: true,
-              root: resolve('src'),
-            },
-          },
-        ],
-      },
-    ],
-  },
-  resolve: {
-    symlinks: true,
+              root: resolve('src')
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      DEBUG: false,
+      DEBUG: false
     }),
     new MinaEntryPlugin(),
-    new MinaRuntimePlugin(),
+    new MinaRuntimePlugin()
   ],
   optimization: {
     splitChunks: {
       chunks: 'all',
       name: 'common.js',
       minChunks: 2,
-      minSize: 0,
+      minSize: 0
     },
     runtimeChunk: {
-      name: 'runtime.js',
-    },
+      name: 'runtime.js'
+    }
   },
-  mode: isProduction ? 'production' : 'none',
+  mode: isProduction ? 'production' : 'none'
 }

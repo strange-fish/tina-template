@@ -5,18 +5,22 @@
     "navigationBarBackgroundColor": "#073a64"
   },
   "pages": [
-    "pages/home.vue",
-    "pages/login-code.vue",
-    "pages/login.vue",
-    "pages/all-leads.vue",
-    "pages/lead-form.vue",
-    "pages/qrcode.vue"
+    "./pages/index.vue"
   ]
 }
 </config>
 
-<script>
-import './initDep'
-
+<script lang="ts">
 App({})
+// import { appify, MyApp, MyStore } from './base/index'
+
+// @appify(new MyStore(), { pages: [], tabBarList: [] })
+// class NewApp extends MyApp {
+//   onLaunch (o) {
+
+//   }
+
+// }
+
+// export default NewApp
 </script>

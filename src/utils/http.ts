@@ -1,16 +1,16 @@
 import Fly from 'flyio/dist/npm/wx'
-import wxApi from './wxApi.js'
+import wxApi from './wxApi'
 import env from '../env'
 
 const http = new Fly()
 
-http.interceptors.request.use(function(config) {
+http.interceptors.request.use(function(config: any) {
   config.baseURL = env.tmgHost + '/efec/api'
   config.headers['Authorization'] = 'Bearer ' + wx.getStorageSync('token')
 })
 
 http.interceptors.response.use(
-  res => {
+  (res: any) => {
     switch (res.data.code) {
       case 401: {
         wx.reLaunch({
@@ -34,7 +34,7 @@ http.interceptors.response.use(
       }
     }
   },
-  err => {
+  (err: any) => {
     if (err.response && err.response.error) {
       wxApi.$modal('服务器错误', err.response.error)
     } else {

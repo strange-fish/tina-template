@@ -16,11 +16,15 @@
     "upload:win32": "C:/Program Files (x86)/Tencent/微信web开发者工具/cli.bat -u $npm_package_version@$INIT_CWD"
   },
   "dependencies": {
+    "@minapp/core": "^2.0.0",
+    "@minapp/mobx": "^2.2.0",
+    "@minapp/wx": "^2.2.1",
     "@tinajs/tina": "^1.6.0",
     "@types/tinajs__tina": "^1.4.1",
     "dayjs": "^1.8.11",
     "es6-promise": "^4.1.1",
     "flyio": "^0.6.14",
+    "mobx": "^5.9.4",
     "validator": "^10.11.0"
   },
   "devDependencies": {
@@ -35,6 +39,7 @@
     "@tinajs/mina-runtime-webpack-plugin": "^1.0.0",
     "@tinajs/wxml-loader": "0.3.1-fork.1",
     "@tinajs/wxs-loader": "^1.0.0",
+    "@types/node": "^11.13.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "cross-env": "^5.1.1",
@@ -62,6 +67,9 @@
     "run-script-os": "^1.0.5",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.0",
+    "ts-lib": "0.0.5",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.4.1",
     "uglifyjs-webpack-plugin": "^1.1.2",
     "webpack": "^4.16.0",
     "webpack-cli": "^3.1.0"

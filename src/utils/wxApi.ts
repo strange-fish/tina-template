@@ -1,6 +1,6 @@
-const apis = {}
+const apis: Record<string, any> = {}
 
-export function toast(title, config = {}) {
+export function toast(title: string, config = {}) {
   return new Promise((resolve, reject) => {
     wx.showToast({
       title, // 提示的内容,
@@ -14,7 +14,7 @@ export function toast(title, config = {}) {
   })
 }
 
-export function modal(title, content, config = {}) {
+export function modal(title: string, content: any, config = {}) {
   return new Promise((resolve, reject) => {
     const c = (typeof content === 'object'
       ? JSON.stringify(content)
@@ -39,14 +39,14 @@ export function modal(title, content, config = {}) {
   })
 }
 
-export function loading(title) {
+export function loading(title: any) {
   if (title) {
     wx.showLoading({
       title,
       mask: true, // 显示透明蒙层，防止触摸穿透,
     })
   } else {
-    wx.hideLoading()
+    wx.hideLoading({})
   }
 }
 
@@ -56,7 +56,7 @@ apis.$loading = loading
 
 const routeMethods = ['navigateTo', 'redirectTo', 'switchTab', 'reLaunch']
 
-function queryString(params) {
+function queryString(params: any) {
   const arr = []
   if (params) {
     for (const key in params) {
@@ -69,9 +69,10 @@ function queryString(params) {
 }
 
 routeMethods.forEach(api => {
-  function wrapApi(url, params) {
+  function wrapApi(url: string, params: any) {
     return new Promise((resolve, reject) => {
-      wx[api]({
+      const func = wx[api]
+      func({
         url: `${url}?${queryString(params)}`,
         success: resolve,
         fail: reject,
