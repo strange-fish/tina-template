@@ -1,5 +1,5 @@
 export default class Bus {
-  constructor () {
+  constructor() {
     this._eventMap = {}
   }
   /**
@@ -7,7 +7,7 @@ export default class Bus {
    * @param {String} event
    * @param {Function} cb
    */
-  on (event, cb) {
+  on(event, cb) {
     if (typeof cb !== 'function') throw new Error('Not a function!')
     const cbList = this._eventMap[event] || []
     if (!cbList.includes(cb)) {
@@ -20,7 +20,7 @@ export default class Bus {
    * @param {String} event
    * @param {Function} cb
    */
-  off (event, cb) {
+  off(event, cb) {
     const cbList = this._eventMap[event] || []
     this._eventMap[event] = cbList.filter(item => item !== cb)
   }
@@ -29,7 +29,7 @@ export default class Bus {
    * @param {String} event
    * @param {Any} args
    */
-  emit (event, args) {
+  emit(event, args) {
     this._eventMap[event].forEach(cb => cb(args))
   }
 }

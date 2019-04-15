@@ -1,31 +1,25 @@
 <config>
 {
-  "usingComponents": "../components/author.vue"
+  "usingComponents": {},
+  "navigationBarTitleText": "test"
 }
 </config>
 
 <template minapp="native" xlang="wxml">
-  <view>
-  </view>
+  <view />
 </template>
 
 <script>
 import { Page } from '@tinajs/tina'
 
 Page.define({
-  data: {
+  data: {},
+  compute(data) {
+    return {}
   },
-  compute (data) {
-    return {
-      name: data ? 'what' : 'how'
-    }
-  },
-  onLoad () {
-  },
-  methods: {
-  }
+  onLoad() {},
+  methods: {},
 })
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

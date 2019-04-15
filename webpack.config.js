@@ -23,9 +23,9 @@ const myStyle = [
   {
     loader: 'sass-resources-loader',
     options: {
-      resources: resolve(__dirname, './src/styles/index.scss')
-    }
-  }
+      resources: resolve(__dirname, './src/styles/index.scss'),
+    },
+  },
 ]
 
 module.exports = {
@@ -36,6 +36,14 @@ module.exports = {
     filename: '[name]',
     publicPath: '/',
     globalObject: 'wx',
+  },
+  stats: {
+    assets: false,
+    chunks: false,
+    chunkModules: false,
+    chunkOrigins: false,
+    modules: false,
+    colors: true,
   },
   module: {
     rules: [
@@ -48,8 +56,8 @@ module.exports = {
             options: {
               loaders,
               languages: {
-                scss: myStyle
-              }
+                scss: myStyle,
+              },
             },
           },
         ],
@@ -89,19 +97,22 @@ module.exports = {
       },
       {
         test: /\.wxml$/,
-        use: [{
-          loader: 'relative-file-loader',
-          options: {
-            name: 'wxml/[name].[hash:6].[ext]',
+        use: [
+          {
+            loader: 'relative-file-loader',
+            options: {
+              name: 'wxml/[name].[hash:6].[ext]',
+            },
           },
-        }, {
-          loader: '@tinajs/wxml-loader',
-          options: {
-            raw: true,
-            enforceRelativePath: true,
-            root: resolve('src'),
+          {
+            loader: '@tinajs/wxml-loader',
+            options: {
+              raw: true,
+              enforceRelativePath: true,
+              root: resolve('src'),
+            },
           },
-        }],
+        ],
       },
     ],
   },
