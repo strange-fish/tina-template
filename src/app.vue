@@ -5,7 +5,8 @@
     "navigationBarBackgroundColor": "#073a64"
   },
   "pages": [
-    "./pages/index.vue"
+    "./pages/test.vue",
+    "./pages/test2.vue"
   ]
 }
 </config>

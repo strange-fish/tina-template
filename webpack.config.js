@@ -135,6 +135,11 @@ module.exports = {
       NODE_ENV: 'development',
       DEBUG: false
     }),
+    new webpack.DefinePlugin({
+      __ENV__: JSON.stringify(process.env.NODE_ENV),
+      __DEV__: !isProduction,
+      __PRO__: isProduction
+    }),
     new MinaEntryPlugin(),
     new MinaRuntimePlugin()
   ],
