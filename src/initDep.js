@@ -3,7 +3,6 @@ import dayjs from 'dayjs'
 import Bus from './utils/Bus'
 import apis from './utils/wxApi'
 import http from './utils/http'
-import globalVariable from './utils/globalVariable'
 import Service from './utils/service.js'
 import env from './env.js'
 
@@ -19,7 +18,6 @@ const eventBus = new Bus()
 injectDep({
   $bus: eventBus,
   $day: dayjs,
-  $global: globalVariable,
   $http: http,
   $service: service,
   $env: env,

@@ -7,9 +7,6 @@ import * as fly from 'flyio'
 
 import http from '../src/utils/http.js'
 import Bus from '../src/utils/Bus.js'
-import global from '../src/utils/globalVariable.js'
-import value from '../src/utils/globalVariable.js';
-import { toast, modal, loading } from '../src/utils/wxApi.js'
 import Service from '../src/utils/service.js'
 import env from '../src/env.js'
 
@@ -37,20 +34,16 @@ declare module '@tinajs/tina' {
       /**
        * query的params
        */
-      options: object;
+      option: object;
     };
 
     // own dep
     $day(config: dayjs.ConfigType): dayjs.Dayjs;
     $bus: Bus;
-    $global: typeof global;
     $http: fly.Fly;
     $navigateTo: WxRouteWrap;
     $redirectTo: WxRouteWrap;
     $reLaunch: WxRouteWrap;
-    $toast: typeof toast,
-    $modal: typeof modal,
-    $loading: typeof loading,
     $service: Service,
     $env: typeof env
   }
