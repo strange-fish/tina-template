@@ -8,8 +8,10 @@
 		"uglifyFileName": false,
 		"newFeature": true
 	},
-	"appid": "wxfb5c1ac84ed5d5c4",
+	"appid": "wxb6a561ee87b4aa41",
 	"projectname": "LMP",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -32,7 +34,7 @@
 				{
 					"id": 0,
 					"name": "0.0",
-					"pathName": "pages/lead-form",
+					"pathName": "pages/test",
 					"query": "",
 					"scene": null
 				}
