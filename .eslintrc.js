@@ -3,7 +3,8 @@ module.exports = {
   extends: ['plugin:vue/recommended','standard'],
   plugins: ["vue"],
   globals: {
-    wx: true
+    wx: true,
+    App: true,
   },
   rules: {
     "vue/html-closing-bracket-newline": 0,
