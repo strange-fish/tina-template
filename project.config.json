@@ -8,8 +8,8 @@
 		"uglifyFileName": false,
 		"newFeature": true
 	},
-	"appid": "wxfb5c1ac84ed5d5c4",
-	"projectname": "LMP",
+	"appid": "tourist",
+	"projectname": "",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,15 +28,7 @@
 		},
 		"miniprogram": {
 			"current": 0,
-			"list": [
-				{
-					"id": 0,
-					"name": "0.0",
-					"pathName": "pages/lead-form",
-					"query": "",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }
