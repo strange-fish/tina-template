@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
-import { Page } from '@tinajs/tina'
+import { pagify, MyPage } from '../base/'
 
-Page.define({
-  data: {
-    name: 'zzp'
-  }
-})
+@pagify()
+class Index extends MyPage {
+}
+
+export default Index
 
 </script>
 

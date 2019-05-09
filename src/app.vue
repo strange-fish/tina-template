@@ -12,16 +12,12 @@
 </config>
 
 <script lang="ts">
-App({})
-// import { appify, MyApp, MyStore } from './base/index'
+import { appify, MyApp, MyStore } from './base/index'
 
-// @appify(new MyStore(), { pages: [], tabBarList: [] })
-// class NewApp extends MyApp {
-//   onLaunch (o) {
+@appify(new MyStore(), { pages: [], tabBarList: [] })
+class NewApp extends MyApp {
 
-//   }
+}
 
-// }
-
-// export default NewApp
+export default NewApp
 </script>

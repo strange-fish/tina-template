@@ -3,13 +3,14 @@
 </template>
 
 <script lang="ts">
-import { pagify } from '@minapp/core'
-import { MyPage } from '../base/MyPage'
+import { pagify, MyPage } from '../base/'
 
 @pagify()
 class Test extends MyPage {
   data = {
     name: 'zzp'
+  }
+  onLoad () {
   }
 }
 
