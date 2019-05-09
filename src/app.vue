@@ -5,14 +5,13 @@
     "navigationBarBackgroundColor": "#073a64"
   },
   "pages": [
-    "./pages/test.vue",
-    "./pages/test2.vue"
+    "./pages/index.vue"
   ]
 }
 </config>
 
 <script lang="ts">
-import { appify, MyApp, MyStore } from './base/index'
+import { appify, MyApp, MyStore } from './base/'
 
 @appify(new MyStore(), { pages: [], tabBarList: [] })
 class NewApp extends MyApp {

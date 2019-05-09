@@ -14,7 +14,7 @@ function observe (obj: Record<string, any>, key: string, watchFun: CallbackFunct
   Object.defineProperty(obj, key, {
     configurable: true,
     enumerable: true,
-    set: function (newVal) {
+    set: function (newVal: any) {
       if (newVal === val) return
       watchFun(newVal, val)
       val = newVal

@@ -7,12 +7,13 @@ import { pagify, MyPage } from '../base/'
 
 @pagify()
 class Index extends MyPage {
+  onLoad () {}
 }
 
 export default Index
 
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

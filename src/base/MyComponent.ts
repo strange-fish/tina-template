@@ -8,5 +8,4 @@ import { MyStore } from './MyStore'
 import { MyApp } from './MyApp'
 
 export class MyComponent<D = any> extends MobxComponent<D, MyStore, MyApp> {
-
 }
