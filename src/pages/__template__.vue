@@ -14,11 +14,11 @@ import { Page } from '@tinajs/tina'
 
 Page.define({
   data: {},
-  compute(data) {
+  compute (data) {
     return {}
   },
-  onLoad() {},
-  methods: {},
+  onLoad () {},
+  methods: {}
 })
 </script>
 

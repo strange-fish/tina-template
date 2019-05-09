@@ -42,43 +42,43 @@ Component.define({
   properties: {
     range: {
       type: Array,
-      value: () => [],
+      value: () => []
     },
     rangeKey: {
       type: String,
-      value: 'label',
+      value: 'label'
     },
     value: {
       type: [String, Number],
       value: '-1',
-      observer(val) {
+      observer (val) {
         const index = this.data.range.findIndex(item => item.value === val)
         this.setData({
-          currentIndex: String(index),
+          currentIndex: String(index)
         })
-      },
+      }
     },
     error: {
       type: String,
-      value: '',
+      value: ''
     },
     placeholder: {
       type: String,
-      value: '',
-    },
+      value: ''
+    }
   },
   data: {
-    currentIndex: '-1',
+    currentIndex: '-1'
   },
 
   methods: {
-    handlePicker(e) {
+    handlePicker (e) {
       const item = this.data.range[e.detail.value]
       this.triggerEvent('change', {
-        value: item.value,
+        value: item.value
       })
-    },
-  },
+    }
+  }
 })
 </script>
 
