@@ -17,7 +17,8 @@ Page.define({
   compute (data) {
     return {}
   },
-  onLoad () {},
+  onLoad () {
+  },
   methods: {}
 })
 </script>

@@ -1,13 +1,11 @@
 const staging = {
-  tmgHost: 'https://ef-staging.wechatify.net',
   host: '',
-  isDev: true,
+  isDev: true
 }
 
 const live = {
-  tmgHost: '',
   host: '',
-  isDev: false,
+  isDev: false
 }
 
 const isDev = process.env.NODE_ENV === 'development'

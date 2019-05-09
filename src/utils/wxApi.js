@@ -2,7 +2,7 @@ const apis = {}
 
 const routeMethods = ['navigateTo', 'redirectTo', 'switchTab', 'reLaunch']
 
-function queryString(params) {
+function queryString (params) {
   const arr = []
   if (params) {
     for (const key in params) {
@@ -15,12 +15,12 @@ function queryString(params) {
 }
 
 routeMethods.forEach(api => {
-  function wrapApi(url, params) {
+  function wrapApi (url, params) {
     return new Promise((resolve, reject) => {
       wx[api]({
         url: `${url}?${queryString(params)}`,
         success: resolve,
-        fail: reject,
+        fail: reject
       })
     })
   }

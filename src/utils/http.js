@@ -4,8 +4,8 @@ import env from '../env'
 
 const http = new Fly()
 
-http.interceptors.request.use(function(config) {
-  config.baseURL = env.tmgHost + '/efec/api'
+http.interceptors.request.use(function (config) {
+  config.baseURL = env.host
   config.headers['Authorization'] = 'Bearer ' + wx.getStorageSync('token')
 })
 
@@ -15,9 +15,9 @@ http.interceptors.response.use(
       case 401: {
         wx.reLaunch({
           url: '/pages/login/main',
-          success() {
+          success () {
             wxApi.$modal('权限错误', res.data.error)
-          },
+          }
         })
         return Promise.reject(res.data)
       }

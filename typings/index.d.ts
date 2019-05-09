@@ -39,6 +39,9 @@ declare module '@tinajs/tina' {
 
     // own dep
     $day(config: dayjs.ConfigType): dayjs.Dayjs;
+    /**
+     * Bus
+     */
     $bus: Bus;
     $http: fly.Fly;
     $navigateTo: WxRouteWrap;
