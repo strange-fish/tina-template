@@ -19,7 +19,8 @@ Page.define({
   },
   onLoad () {
   },
-  methods: {}
+  methods: {
+  }
 })
 </script>
 
