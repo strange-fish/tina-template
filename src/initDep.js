@@ -6,7 +6,7 @@ import http from './utils/http'
 import Service from './utils/service.js'
 import env from './env.js'
 
-function injectDep(deps) {
+function injectDep (deps) {
   ;[Page, Component].forEach(item => {
     Object.assign(item.prototype, deps)
   })
@@ -21,5 +21,5 @@ injectDep({
   $http: http,
   $service: service,
   $env: env,
-  ...apis,
+  ...apis
 })

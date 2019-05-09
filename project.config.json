@@ -8,8 +8,10 @@
 		"uglifyFileName": false,
 		"newFeature": true
 	},
-	"appid": "tourist",
-	"projectname": "",
+	"appid": "wxb6a561ee87b4aa41",
+	"projectname": "tina-template",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
