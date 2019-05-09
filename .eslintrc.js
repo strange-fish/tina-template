@@ -1,7 +1,7 @@
 // .eslintrc.js
 module.exports = {
-  extends: ['plugin:vue/recommended','prettier',"prettier/standard"],
-  plugins: ["vue", "prettier"],
+  extends: ['plugin:vue/recommended','standard'],
+  plugins: ["vue"],
   globals: {
     wx: true
   },
@@ -10,7 +10,6 @@ module.exports = {
     'vue/attribute-hyphenation': 0,
     'vue/valid-template-root': 0,
     'vue/comment-directive': 0,
-    "prettier/prettier": "error",
     "vue/max-attributes-per-line": ["error", {
       "singleline": 5,
       "multiline": {

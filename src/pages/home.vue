@@ -70,9 +70,9 @@ Page.define({
   data: {
     mark: 80,
     total: 100,
-    hasInit: false,
+    hasInit: false
   },
-  onLoad() {
+  onLoad () {
     this.$loading('验证中')
     this.$service
       .precheck()
@@ -84,22 +84,22 @@ Page.define({
         this.$loading()
       })
   },
-  onShow() {
+  onShow () {
     if (this.data.hasInit) {
       this.initData()
     }
   },
-  compute(data) {
+  compute (data) {
     const [color, text] = this.getColorAndText(data.mark)
     const percent = 1 - data.mark / data.total
     return {
       barColor: color,
       barText: text,
-      angle: percent < 0 ? 0 : percent * 180,
+      angle: percent < 0 ? 0 : percent * 180
     }
   },
   methods: {
-    initData() {
+    initData () {
       this.$toast('加载中')
     },
     // setMark(mark, step = 0) {
@@ -115,7 +115,7 @@ Page.define({
     //     }, 150)
     //   }
     // },
-    getColorAndText(mark = 0) {
+    getColorAndText (mark = 0) {
       if (mark <= 10) {
         return ['#ff5500', '初出茅庐']
       } else if (mark <= 30) {
@@ -128,15 +128,15 @@ Page.define({
         return ['#34bd03', '一代宗师']
       }
     },
-    logout() {
+    logout () {
       this.$http.post('/logout').then(res => {
         this.$reLaunch('/pages/login')
       })
     },
-    goToQrcode() {
+    goToQrcode () {
       this.$navigateTo('/pages/qrcode')
-    },
-  },
+    }
+  }
 })
 </script>
 
