@@ -10,15 +10,16 @@ function queryString (params) {
         arr.push(`${key}=${params[key]}`)
       }
     }
+    return '?' + arr.join('&')
   }
-  return arr.join('&')
+  return ''
 }
 
 routeMethods.forEach(api => {
   function wrapApi (url, params) {
     return new Promise((resolve, reject) => {
       wx[api]({
-        url: `${url}?${queryString(params)}`,
+        url: url + queryString(params),
         success: resolve,
         fail: reject
       })
