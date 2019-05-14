@@ -1,0 +1,22 @@
+diff --git a/node_modules/@types/tinajs__tina/index.d.ts b/node_modules/@types/tinajs__tina/index.d.ts
+index 3ffca83..e9ff95e 100644
+--- a/node_modules/@types/tinajs__tina/index.d.ts
++++ b/node_modules/@types/tinajs__tina/index.d.ts
+@@ -22,7 +22,7 @@ export interface ComponentDefinitions extends ComponentLifecycles {
+     properties: ComponentProperties;
+     data: { [key: string]: any };
+     compute: (data: { [key: string]: any }) => { [key: string]: any };
+-    methods: { [name: string]: (this: Component) => any };
++    methods: { [name: string]: (this: Component, ...args: any[]) => any };
+     mixins: Array<Partial<ComponentDefinitions>>;
+ }
+ 
+@@ -35,7 +35,7 @@ export class Component {
+ 
+ export interface PageHooks {
+     beforeLoad: (this: Page) => void;
+-    onLoad: (this: Page) => void;
++    onLoad: (this: Page, options?: any) => void;
+     onReady: (this: Page) => void;
+     onShow: (this: Page) => void;
+     onHide: (this: Page) => void;

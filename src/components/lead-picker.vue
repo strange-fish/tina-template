@@ -70,7 +70,6 @@ Component.define({
   data: {
     currentIndex: '-1'
   },
-
   methods: {
     handlePicker (e) {
       const item = this.data.range[e.detail.value]

@@ -13,13 +13,14 @@
 import { Page } from '@tinajs/tina'
 
 Page.define({
-  data: {},
-  compute (data) {
-    return {}
+  data: {
+    name: ''
   },
-  onLoad () {
+  onLoad (options) {
   },
   methods: {
+    haha (e) {
+    }
   }
 })
 </script>
