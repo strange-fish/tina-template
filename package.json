@@ -16,6 +16,7 @@
     "upload:win32": "C:/Program Files (x86)/Tencent/微信web开发者工具/cli.bat -u $npm_package_version@$INIT_CWD"
   },
   "dependencies": {
+    "@strange-fish/wxp": "0.0.5",
     "@tinajs/tina": "^1.6.0",
     "dayjs": "^1.8.11",
     "es6-promise": "^4.1.1",

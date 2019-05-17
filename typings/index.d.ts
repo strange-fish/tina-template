@@ -4,6 +4,7 @@
 
 import dayjs from 'dayjs'
 import * as fly from 'flyio'
+import { wxp } from '@strange-fish/wxp'
 
 import http from '../src/utils/http.js'
 import Bus from '../src/utils/Bus.js'
@@ -24,6 +25,7 @@ declare module '@tinajs/tina' {
          */
         $bus: Bus;
         $http: fly.Fly;
+        $wxp: wxp.WXP;
         $navigateTo: WxRouteWrap;
         $redirectTo: WxRouteWrap;
         $reLaunch: WxRouteWrap;

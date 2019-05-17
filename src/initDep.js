@@ -1,5 +1,7 @@
 import { Page, Component } from '@tinajs/tina'
 import dayjs from 'dayjs'
+import { wxp } from '@strange-fish/wxp'
+
 import Bus from './utils/Bus'
 import apis from './utils/wxApi'
 import http from './utils/http'
@@ -21,5 +23,6 @@ injectDep({
   $http: http,
   $service: service,
   $env: env,
+  $wxp: wxp,
   ...apis
 })
