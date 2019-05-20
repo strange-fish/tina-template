@@ -20,6 +20,7 @@ Page.define({
   },
   methods: {
     haha (e) {
+
     }
   }
 })
