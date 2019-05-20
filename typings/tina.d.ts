@@ -1,9 +1,3 @@
-// Type definitions for @tinajs/tina 1.4
-// Project: https://github.com/tinajs/tina, https://tina.js.org
-// Definitions by: Jiayu Liu <https://github.com/Jimexist>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped/tinajs__tina
-// TypeScript Version: 2.2
-
 declare module '@tinajs/tina' {
   export function use(plugin: any): void
 
@@ -14,15 +8,9 @@ declare module '@tinajs/tina' {
     methods: { [name: string]: (this: T, ...args: any[]) => any }
     setData(data: { [key: string]: any }): void
     /**
-     * 小程序页面的实例
+     * 小程序的实例
      */
-    $source: {
-      [key: string]: any
-      /**
-       * query params
-       */
-      option: object | void
-    }
+    $source: Record<string, any>
   }
 
   export interface ComponentHooks {
@@ -37,7 +25,7 @@ declare module '@tinajs/tina' {
     extends ComponentHooks,
       BaseDefinitions<ComponentDefinitions> {
     properties: { [key: string]: any }
-    observer: Record<string, (val: any) => {}>
+    observers: Record<string, (this: ComponentDefinitions, ...args: any[]) => void>
     /**
      * @param name 事件名称
      * @param detail 事件内容
