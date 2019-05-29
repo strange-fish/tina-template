@@ -3,11 +3,18 @@
 </template>
 
 <script lang="ts">
-import { pagify, MyPage } from '../base/'
+import { pagify, MyPage, WxBaseEvent } from '../base/'
 
 @pagify()
 class Index extends MyPage {
+  data = {
+    name: 'what'
+  }
+
   onLoad () {}
+
+  onShow () {
+  }
 }
 
 export default Index

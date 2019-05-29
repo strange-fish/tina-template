@@ -7,5 +7,6 @@ export * from './MyStore'
 export * from './MyApp'
 export * from './MyPage'
 export * from './MyComponent'
+export * from './Events'
 
 export { wxp, pagify, appify, comify } from '@minapp/mobx'

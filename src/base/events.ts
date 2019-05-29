@@ -8,7 +8,9 @@ export interface WxBaseEvent {
     [k: string]: any
   },
 
-  detail: any,
+  detail: {
+    value?: string
+  },
 
   /**
    * 触发事件的组件的一些属性值集合
