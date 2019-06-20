@@ -1,12 +1,16 @@
 <config>
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "my-picker": "../components/lead-picker.vue"
+  },
   "navigationBarTitleText": "test"
 }
 </config>
 
 <template minapp="native" xlang="wxml">
-  <view />
+  <view>
+    <my-picker />
+  </view>
 </template>
 
 <script>

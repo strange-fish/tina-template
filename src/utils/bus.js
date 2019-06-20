@@ -1,3 +1,4 @@
+
 export default class Bus {
   constructor () {
     this._eventMap = {}
