@@ -38,6 +38,11 @@
 import { Component } from '@tinajs/tina'
 
 Component.define({
+  pageLifetimes: {
+    show () {
+      console.log('pageLifetimes -- show')
+    }
+  },
   properties: {
     range: {
       type: Array,
