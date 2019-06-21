@@ -11,8 +11,7 @@
     range-key="{{rangeKey}}"
     value="{{currentIndex}}"
     bindchange="handlePicker"
-    data-name="{{name}}"
-  >
+    data-name="{{name}}">
     <view class="lead-picker__inner">
       <block wx:if="{{range[currentIndex]}}">
         {{ range[currentIndex][rangeKey] }}
@@ -39,11 +38,6 @@
 import { Component } from '@tinajs/tina'
 
 Component.define({
-  pageLifetimes: {
-    show () {
-      console.log('pageLifetimes -- show')
-    }
-  },
   properties: {
     range: {
       type: Array,

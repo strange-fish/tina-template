@@ -1,6 +1,5 @@
 /// <reference path="./lib.wa.es6.d.ts" />
 /// <reference path="./wx/index.d.ts" />
-/// <reference path="./tina.d.ts" />
 
 import dayjs from 'dayjs'
 import * as fly from 'flyio'
