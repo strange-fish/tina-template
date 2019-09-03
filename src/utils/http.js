@@ -1,11 +1,15 @@
+import { Fly as FlyType } from 'flyio'
 import Fly from 'flyio/dist/npm/wx'
 import wxApi from './wxApi.js'
 import env from '../env'
 
+/**
+ * @type {FlyType}
+ */
 const http = new Fly()
+http.config.baseURL = env.host
 
 http.interceptors.request.use(function (config) {
-  config.baseURL = env.host
   config.headers['Authorization'] = 'Bearer ' + wx.getStorageSync('token')
 })
 
