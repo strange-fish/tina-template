@@ -2,11 +2,31 @@ const { resolve } = require('path')
 const webpack = require('webpack')
 const MinaEntryPlugin = require('@tinajs/mina-entry-webpack-plugin')
 const MinaRuntimePlugin = require('@tinajs/mina-runtime-webpack-plugin')
+// happypack
+const HappyPack = require('happypack')
+const os = require('os')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+function createHappyPlugin (id, loaders) {
+  return new HappyPack({
+    id: id,
+    loaders: loaders,
+    threadPool: happyThreadPool,
+    // make happy more verbose with HAPPY_VERBOSE=1
+    verbose: process.env.HAPPY_VERBOSE === '1'
+  })
+}
+const BABEL_ID = 'happy-babel-js'
+
 const loaders = {
-  script: 'babel-loader',
+  script: {
+    loader: 'happypack/loader',
+    options: {
+      id: BABEL_ID
+    }
+  },
   style: {
     loader: 'postcss-loader',
     options: {
@@ -49,6 +69,7 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
+        include: [resolve('src')],
         exclude: /node_modules/,
         use: [
           {
@@ -117,13 +138,21 @@ module.exports = {
     ]
   },
   resolve: {
-    symlinks: true
+    symlinks: true,
+    modules: [
+      resolve('src'),
+      resolve('node_modules')
+    ],
+    alias: {
+      '@': resolve('src')
+    }
   },
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       DEBUG: false
     }),
+    createHappyPlugin(BABEL_ID, ['babel-loader?cacheDirectory=true']),
     new MinaEntryPlugin(),
     new MinaRuntimePlugin()
   ],
