@@ -4,49 +4,29 @@ const MinaEntryPlugin = require('@tinajs/mina-entry-webpack-plugin')
 const MinaRuntimePlugin = require('@tinajs/mina-runtime-webpack-plugin')
 // happypack
 const HappyPack = require('happypack')
-const os = require('os')
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+const happyThreadPool = HappyPack.ThreadPool({ size: 2 })
+const loaders = require('./loaders')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
 function createHappyPlugin (id, loaders) {
   return new HappyPack({
-    id: id,
-    loaders: loaders,
+    id,
+    loaders,
     threadPool: happyThreadPool,
     // make happy more verbose with HAPPY_VERBOSE=1
     verbose: process.env.HAPPY_VERBOSE === '1'
   })
 }
-const BABEL_ID = 'happy-babel-js'
-
-const loaders = {
-  script: {
+function getHappy (id) {
+  return {
     loader: 'happypack/loader',
     options: {
-      id: BABEL_ID
-    }
-  },
-  style: {
-    loader: 'postcss-loader',
-    options: {
-      config: {
-        path: resolve('./postcss.config.js')
-      }
+      id
     }
   }
 }
-
-const myStyle = [
-  loaders.style,
-  'sass-loader',
-  {
-    loader: 'sass-resources-loader',
-    options: {
-      resources: resolve(__dirname, './src/styles/index.scss')
-    }
-  }
-]
+const BABEL_ID = 'happy-babel-js'
 
 module.exports = {
   context: resolve('src'),
@@ -75,9 +55,13 @@ module.exports = {
           {
             loader: '@tinajs/mina-loader',
             options: {
-              loaders,
+              loaders: {
+                script: getHappy(BABEL_ID),
+                style: loaders.postCssLoader
+              },
               languages: {
-                scss: myStyle
+                scss: loaders.scssLoader,
+                less: loaders.lessLoader
               }
             }
           }
@@ -152,7 +136,7 @@ module.exports = {
       NODE_ENV: 'development',
       DEBUG: false
     }),
-    createHappyPlugin(BABEL_ID, ['babel-loader?cacheDirectory=true']),
+    createHappyPlugin(BABEL_ID, [loaders.babelLoader]),
     new MinaEntryPlugin(),
     new MinaRuntimePlugin()
   ],

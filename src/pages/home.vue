@@ -1,7 +1,6 @@
 <config>
 {
   "usingComponents": {
-    "my-picker": "../components/lead-picker.vue"
   },
   "navigationBarTitleText": "test"
 }
@@ -29,4 +28,8 @@ Page.define({
 })
 </script>
 
-<style lang="scss"></style>
+<style lang="less">
+.one {
+  font-size: 14px;
+}
+</style>
