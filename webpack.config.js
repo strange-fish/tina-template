@@ -3,8 +3,10 @@ const webpack = require('webpack')
 const MinaEntryPlugin = require('@tinajs/mina-entry-webpack-plugin')
 const MinaRuntimePlugin = require('@tinajs/mina-runtime-webpack-plugin')
 // happypack
+const os = require('os')
+const cpus = Math.floor(os.cpus().length / 2)
 const HappyPack = require('happypack')
-const happyThreadPool = HappyPack.ThreadPool({ size: 2 })
+const happyThreadPool = HappyPack.ThreadPool({ size: cpus })
 const loaders = require('./loaders')
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -29,6 +31,10 @@ function getHappy (id) {
 const BABEL_ID = 'happy-babel-js'
 
 module.exports = {
+  cache: true,
+  watchOptions: {
+    ignored: /node_modules/
+  },
   context: resolve('src'),
   entry: './app.vue',
   output: {
