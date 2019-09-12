@@ -17,6 +17,7 @@ function injectDep (deps) {
 const service = new Service()
 const eventBus = new Bus()
 
+global.wxp = wxp
 injectDep({
   $bus: eventBus,
   $day: dayjs,

@@ -5,6 +5,7 @@ module.exports = {
   globals: {
     wx: true,
     App: true,
+    wxp: true
   },
   rules: {
     "vue/html-closing-bracket-newline": 0,

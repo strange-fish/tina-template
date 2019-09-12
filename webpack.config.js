@@ -59,7 +59,6 @@ module.exports = {
         include: [resolve('src')],
         exclude: /node_modules/,
         use: [
-          'cache-loader',
           {
             loader: '@tinajs/mina-loader',
             options: {
