@@ -1,6 +1,6 @@
 const { resolve } = require('path')
 
-const babelLoader = 'babel-loader?cacheDirectory=true'
+const babelLoader = ['cache-loader', 'babel-loader?cacheDirectory=true']
 
 const postCssLoader = {
   loader: 'postcss-loader',

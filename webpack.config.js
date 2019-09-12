@@ -59,6 +59,7 @@ module.exports = {
         include: [resolve('src')],
         exclude: /node_modules/,
         use: [
+          'cache-loader',
           {
             loader: '@tinajs/mina-loader',
             options: {
@@ -145,7 +146,7 @@ module.exports = {
       NODE_ENV: 'development',
       DEBUG: false
     }),
-    createHappyPlugin(BABEL_ID, [loaders.babelLoader]),
+    createHappyPlugin(BABEL_ID, loaders.babelLoader),
     new MinaEntryPlugin(),
     new MinaRuntimePlugin()
   ],
