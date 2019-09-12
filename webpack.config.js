@@ -74,11 +74,13 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        include: [resolve('src')],
         exclude: /node_modules/,
         use: loaders.script
       },
       {
         test: /\.(css|wxss)$/,
+        include: [resolve('src')],
         exclude: /node_modules/,
         use: loaders.style
       },

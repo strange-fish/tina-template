@@ -1,7 +1,7 @@
-import dayjs from 'dayjs'
+import * as dayjs from 'dayjs'
 import * as fly from 'flyio'
 import { wxp } from '@strange-fish/wxp'
-import 'miniprogram-api-typings'
+import 'miniprogram-api-typings/types/wx/lib.wx.api.d.ts'
 
 import http from '../src/utils/http.js'
 import Bus from '../src/utils/Bus.js'
@@ -16,7 +16,7 @@ interface WxRouteWrap {
 declare module '@tinajs/tina' {
   interface BaseDefinitions {
         // own dep
-        $day(config: dayjs.ConfigType): dayjs.Dayjs;
+        $day: typeof dayjs;
         /**
          * Bus
          */

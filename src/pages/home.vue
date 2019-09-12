@@ -1,6 +1,7 @@
 <config>
 {
   "usingComponents": {
+    "lead-picker": "../components/lead-picker.vue"
   },
   "navigationBarTitleText": "test"
 }
