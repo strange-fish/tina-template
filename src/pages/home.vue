@@ -29,7 +29,7 @@ Page.define({
 })
 </script>
 
-<style lang="less">
+<style lang="scss">
 .one {
   font-size: 14px;
 }

@@ -13,5 +13,8 @@
 <script>
 import './initDep'
 
-App({})
+App({
+  onShow () {
+  }
+})
 </script>

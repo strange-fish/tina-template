@@ -2,6 +2,7 @@ const { resolve } = require('path')
 const webpack = require('webpack')
 const MinaEntryPlugin = require('@tinajs/mina-entry-webpack-plugin')
 const MinaRuntimePlugin = require('@tinajs/mina-runtime-webpack-plugin')
+// const HardSourceLoader = require('hard-source-webpack-plugin')
 // happypack
 const os = require('os')
 const cpus = Math.floor(os.cpus().length / 2)
@@ -149,7 +150,15 @@ module.exports = {
     new MinaRuntimePlugin()
   ],
   optimization: {
+    moduleIds: 'hashed',
     splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors.js',
+          chunks: 'all'
+        }
+      },
       chunks: 'all',
       name: 'common.js',
       minChunks: 2,

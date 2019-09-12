@@ -1,7 +1,7 @@
 import * as dayjs from 'dayjs'
 import * as fly from 'flyio'
 import { wxp } from '@strange-fish/wxp'
-import 'miniprogram-api-typings/types/wx/lib.wx.api.d.ts'
+import 'miniprogram-api-typings'
 
 import http from '../src/utils/http.js'
 import Bus from '../src/utils/Bus.js'
