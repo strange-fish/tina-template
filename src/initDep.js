@@ -8,6 +8,8 @@ import http from './utils/http'
 import Service from './utils/service.js'
 import env from './env.js'
 
+global.wxp = wxp
+
 function injectDep (deps) {
   ;[Page, Component].forEach(item => {
     Object.assign(item.prototype, deps)
@@ -17,7 +19,6 @@ function injectDep (deps) {
 const service = new Service()
 const eventBus = new Bus()
 
-global.wxp = wxp
 injectDep({
   $bus: eventBus,
   $day: dayjs,

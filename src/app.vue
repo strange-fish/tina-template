@@ -15,8 +15,6 @@ import './initDep'
 
 App({
   async onShow () {
-    const sysInfo = await wxp.getSystemInfo()
-    console.log(sysInfo)
   }
 })
 </script>
