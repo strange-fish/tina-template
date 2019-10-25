@@ -1,14 +1,14 @@
 import { Page, Component } from '@tinajs/tina'
 import dayjs from 'dayjs'
-import { wxp } from '@strange-fish/wxp'
+
+// ! 需要最先引入
+import './global.js'
 
 import Bus from './utils/Bus'
 import apis from './utils/wxApi'
 import http from './utils/http'
 import Service from './utils/service.js'
 import env from './env.js'
-
-global.wxp = wxp
 
 function injectDep (deps) {
   ;[Page, Component].forEach(item => {
@@ -25,6 +25,5 @@ injectDep({
   $http: http,
   $service: service,
   $env: env,
-  $wxp: wxp,
   ...apis
 })
