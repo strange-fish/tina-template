@@ -11,7 +11,8 @@ module.exports = {
     wx: true,
     getApp: true,
     getPage: true,
-    getCurrentPages: true
+    getCurrentPages: true,
+    wxp: true
   },
   rules: {
     "vue/html-closing-bracket-newline": 0,

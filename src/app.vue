@@ -14,7 +14,7 @@
 import './initDep'
 
 App({
-  onShow () {
+  async onShow () {
   }
 })
 </script>
