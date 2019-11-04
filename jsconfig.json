@@ -4,6 +4,7 @@
     "module": "commonjs",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
+    "noImplicitThis": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]

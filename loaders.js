@@ -1,4 +1,5 @@
 const { resolve } = require('path')
+const sass = require('sass').default
 
 const babelLoader = ['cache-loader', 'babel-loader?cacheDirectory=true']
 
@@ -13,7 +14,12 @@ const postCssLoader = {
 
 const scssLoader = [
   postCssLoader,
-  'sass-loader',
+  {
+    loader: 'sass-loader',
+    options: {
+      implementation: sass
+    }
+  },
   {
     loader: 'sass-resources-loader',
     options: {
