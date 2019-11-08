@@ -13,6 +13,7 @@ const postCssLoader = {
 }
 
 const scssLoader = [
+  'cache-loader',
   postCssLoader,
   {
     loader: 'sass-loader',
