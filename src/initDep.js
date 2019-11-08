@@ -7,7 +7,7 @@ import './global.js'
 import Bus from './utils/Bus'
 import apis from './utils/wxApi'
 import http from './utils/http'
-import Service from './utils/service.js'
+import service from './service'
 import env from './env.js'
 
 function injectDep (deps) {
@@ -16,11 +16,8 @@ function injectDep (deps) {
   })
 }
 
-const service = new Service()
-const eventBus = new Bus()
-
 injectDep({
-  $bus: eventBus,
+  $bus: new Bus(),
   $day: dayjs,
   $http: http,
   $service: service,

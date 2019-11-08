@@ -7,7 +7,7 @@ import 'miniprogram-api-typings'
 
 import http from '../src/utils/http.js'
 import Bus from '../src/utils/Bus.js'
-import Service from '../src/utils/service.js'
+import service from '../src/service'
 import env from '../src/env.js'
 
 interface WxRouteWrap {
@@ -28,7 +28,7 @@ declare module '@tinajs/tina' {
         $navigateTo: WxRouteWrap;
         $redirectTo: WxRouteWrap;
         $reLaunch: WxRouteWrap;
-        $service: Service;
+        $service: typeof service;
         $env: typeof env;
   }
 }
