@@ -16,12 +16,12 @@
     "upload:win32": "C:/Program Files (x86)/Tencent/微信web开发者工具/cli.bat -u $npm_package_version@$INIT_CWD"
   },
   "dependencies": {
-    "@strange-fish/wxp": "^2.9.1",
+    "@strange-fish/wxp": "^2.9.2",
     "@tinajs/tina": "^1.8.0",
     "dayjs": "^1.8.17",
     "es6-promise": "^4.2.8",
     "flyio": "^0.6.14",
-    "miniprogram-api-typings": "^2.9.1",
+    "miniprogram-api-typings": "^2.9.2",
     "validator": "^10.11.0"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "relative-file-loader": "^1.1.12",
     "rimraf": "^2.7.1",
     "run-script-os": "^1.0.7",
-    "sass": "^1.23.3",
+    "sass": "^1.23.6",
     "sass-loader": "^7.3.1",
     "sass-resources-loader": "^2.0.1",
     "uglifyjs-webpack-plugin": "^1.1.2",
