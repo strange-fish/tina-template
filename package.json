@@ -8,6 +8,7 @@
     "clean": "rimraf \"./dist/!(app.json)**\"",
     "prestart": "run-s clean",
     "prebuild": "run-s clean",
+    "dev": "npm run start",
     "start": "webpack --watch --progress",
     "build": "cross-env NODE_ENV=production webpack",
     "preupload": "run-s build",
