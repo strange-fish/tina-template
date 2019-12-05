@@ -83,13 +83,13 @@ module.exports = {
         test: /\.js$/,
         include: [resolve('src')],
         exclude: /node_modules/,
-        use: loaders.script
+        use: getHappy(BABEL_ID)
       },
       {
         test: /\.(css|wxss)$/,
         include: [resolve('src')],
         exclude: /node_modules/,
-        use: loaders.style
+        use: loaders.postCssLoader
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -131,6 +131,7 @@ module.exports = {
     ]
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     symlinks: true,
     modules: [
       resolve('src'),

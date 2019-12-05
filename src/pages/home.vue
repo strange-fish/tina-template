@@ -21,6 +21,7 @@ Page.define({
     name: ''
   },
   onLoad (options) {
+    console.log(this.data.gName)
   },
   methods: {
     haha (e) {
