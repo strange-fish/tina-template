@@ -9,22 +9,30 @@
 
 <template minapp="native" xlang="wxml">
   <view>
-    <my-picker />
+    <button bind:tap="haha">{{ num }}+{{ two }}</button>
   </view>
 </template>
 
 <script>
 import { Page } from '@tinajs/tina'
+import { mixStore } from '../store'
 
 Page.define({
+  mixins: [
+    mixStore(({ test }) => ({
+      num: test.num
+    }))
+  ],
   data: {
     name: ''
   },
   onLoad (options) {
-    console.log(this.data.gName)
   },
   methods: {
     haha (e) {
+      this.$store.test.num += 2
+    },
+    things (e) {
     }
   }
 })

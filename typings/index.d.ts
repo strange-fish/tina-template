@@ -9,6 +9,7 @@ import http from '../src/utils/http.js'
 import Bus from '../src/utils/Bus.js'
 import service from '../src/service'
 import env from '../src/env.js'
+import { store } from '@/store/index'
 
 interface WxRouteWrap {
   (path: string, params?: {[key: string]: string | number}): Promise<T>;
@@ -30,5 +31,6 @@ declare module '@tinajs/tina' {
         $reLaunch: WxRouteWrap;
         $service: typeof service;
         $env: typeof env;
+        $store: typeof store;
   }
 }

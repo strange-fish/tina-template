@@ -9,6 +9,7 @@ import apis from './utils/wxApi'
 import http from './utils/http'
 import service from './service'
 import env from './env.js'
+import { store } from '@/store'
 
 function injectDep (deps) {
   ;[Page, Component].forEach(item => {
@@ -22,5 +23,6 @@ injectDep({
   $http: http,
   $service: service,
   $env: env,
+  $store: store,
   ...apis
 })

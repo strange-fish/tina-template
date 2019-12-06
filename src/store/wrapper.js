@@ -1,12 +1,13 @@
 import { autorun } from 'mobx'
+import { store } from './store'
 
 function returnEmpty () {
   return {}
 }
 /**
  *
- * @param {() => Record<string, any>} mapState
- * @param {() => Record<string, Function>} mapMethod
+ * @param {(s: typeof store) => Record<string, any>} mapState
+ * @param {(s: typeof store) => Record<string, Function>} mapMethod
  */
 export const mixStore = (mapState = returnEmpty, mapMethod = returnEmpty) => {
   let dispose
@@ -14,8 +15,9 @@ export const mixStore = (mapState = returnEmpty, mapMethod = returnEmpty) => {
   function install () {
     dispose = autorun(() => {
       if (typeof mapState === 'function') {
+        console.log('run')
         this.setData(
-          mapState()
+          mapState(store)
         )
       }
     })
@@ -33,6 +35,6 @@ export const mixStore = (mapState = returnEmpty, mapMethod = returnEmpty) => {
     onUnload: uninstall,
     attached: install,
     detached: uninstall,
-    methods: mapMethod()
+    methods: mapMethod(store)
   }
 }

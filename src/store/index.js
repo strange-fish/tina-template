@@ -1,2 +1,2 @@
 export { mixStore } from './wrapper'
-export { test } from './test'
+export { store } from './store'
